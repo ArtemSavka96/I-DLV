@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Download &mdash; idlv 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Download" href="../Advanced/advanced.html" />
+    <link rel="prev" title="I-DLV" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> idlv
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Basic Version:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Download</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#link">Link</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-execute">How to execute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-cite-i-dlv">How to cite I-DLV</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#syntax">Syntax</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basic-language">Basic Language</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#terms">Terms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#atoms-and-literal">Atoms and Literal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#facts">Facts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#a-program-with-comments">A program with comments</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#costraint-and-functions">Costraint and Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#integrity-constraints">Integrity Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#constraints-and-negation">Constraints and negation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#safety">Safety</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#weak-constraints">Weak Constraints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#aggregate-function">Aggregate function</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#modelling-and-programming-techniques">Modelling and Programming Techniques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#recursion">Recursion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#transitive-closure">Transitive Closure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-gco">The GCO</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#guess">Guess</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#check">Check</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#optimize">Optimize</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#annotations">Annotations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#list">List</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#example">Example</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#same-generation">Same generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reachability">Reachability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hamiltonian-path">Hamiltonian Path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#minimum-spanning-tree">Minimum Spanning Tree</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#colorability">3-colorability</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#first-mode">First Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#second-mode">Second Mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#third-mode">Third Mode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Advanced Version:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Advanced/advanced.html">Download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Advanced/advanced.html#syntax">Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Advanced/advanced.html#example">Example</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Incremental Version:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Incremental/i2dlv.html">Download</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Incremental/i2dlv.html#syntax">Syntax</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Incremental/i2dlv.html#example">Example</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">idlv</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Download</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Basic/basic.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="download">
+<h1>Download<a class="headerlink" href="#download" title="Permalink to this headline"></a></h1>
+<ul>
+<li><p>I-DLV is a full-fledged Answer Set Programming and Datalog reasoner.
+It supports the ASP-Core-2 standard language; nevertheless, the system supports additional linguistic extensions such as list terms and external atoms.</p></li>
+<li><p>I-DLV is also a full-fledged deductive database system, supporting query answering powered by the Magic Sets technique.
+I-DLV has also been integrated as the grounding module of the completely renewed second version of the logic-based Artificial Intelligence system DLV.</p></li>
+<li><p>The basic version of I-DLV support weak costraint, costraint, list, annotations, aggregate functions and so on <a class="reference internal" href="#syntax"><span class="std std-ref">Syntax</span></a>.</p></li>
+<li><p>The basic version of I-DLV:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Linux</strong>: Static executable of I-DLV for Linux x86-64.</p></li>
+<li><p><strong>Windows</strong>: Static executable of I-DLV for Windows 64bit.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<div class="section" id="link">
+<h2>Link<a class="headerlink" href="#link" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>You can download the latest stable release of I-DLV <a class="reference external" href="https://github.com/DeMaCS-UNICAL/I-DLV/releases">in the release section of github</a>.</p></li>
+</ul>
+</div>
+<div class="section" id="how-to-execute">
+<h2>How to execute<a class="headerlink" href="#how-to-execute" title="Permalink to this headline"></a></h2>
+<ul>
+<li><p>After downloading the I-DLV, we have to make the file <strong>executable</strong> and depending on the operating system:</p>
+<blockquote>
+<div><ul>
+<li><p>On Windows without WSL:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Rename the file idlv.exe</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>On Linux or Windows with WSL:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p>Open a terminal on Linux or the WSL terminal</p></li>
+<li><p>Move using the <cite>cd</cite> command to the folder in which we downloaded I-DLV</p></li>
+<li><p>Rename the idlv using the <cite>mv</cite> command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="n">file_download</span> <span class="n">idvl</span>
+</pre></div>
+</div>
+</li>
+<li><p>Execute the following command on the terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="o">+</span> <span class="n">xX</span> <span class="n">idlv</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>On MacOS you need to perform a procedure similar to Linux <code class="docutils literal notranslate"><span class="pre">3.</span></code> and <code class="docutils literal notranslate"><span class="pre">4.</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p><strong>Execute I-DLV</strong></p>
+<blockquote>
+<div><ul>
+<li><p>On Linux,MacOs or WSL terminal:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">idlv</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</li>
+<li><p>On Windows, from the command prompt:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">idlv</span><span class="o">.</span><span class="n">exe</span> <span class="n">file</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div></blockquote>
+<ul>
+<li><dl class="simple">
+<dt>I-DLV can interoperate with the state-of-the-art solvers:</dt><dd><ul class="simple">
+<li><p><a class="reference external" href="https://github.com/alviano/wasp/">wasp</a>.</p></li>
+<li><p><a class="reference external" href="https://sourceforge.net/projects/potassco/files/clasp">clasp</a>.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Indeed, by default I-DLV output is produced in a numeric format compliant with the mentioned solvers.</p></li>
+<li><p>In order to interoperate with a solver type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">idlv</span> <span class="p">[</span><span class="n">filename</span> <span class="p">[</span><span class="n">filename</span> <span class="p">[</span><span class="o">...</span><span class="p">]]]</span> <span class="o">|</span> <span class="o">./</span><span class="n">solver_executable</span>
+</pre></div>
+</div>
+</li>
+<li><p>In order to obtain the ground program in textual format type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">idlv</span> <span class="o">--</span><span class="n">t</span> <span class="p">[</span><span class="n">filename</span> <span class="p">[</span><span class="n">filename</span> <span class="p">[</span><span class="o">...</span><span class="p">]]]</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="how-to-cite-i-dlv">
+<h2>How to cite I-DLV<a class="headerlink" href="#how-to-cite-i-dlv" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Francesco Calimeri, Davide Fuscà, Simona Perri, Jessica Zangari: I-DLV: The New Intelligent Grounder of dlv. AI*IA 2016: 192-207</p></li>
+<li><p>Francesco Calimeri, Davide Fuscà, Simona Perri, Jessica Zangari: I-DLV: The new intelligent grounder of DLV. Intelligenza Artificiale 11(1): 5-20 (2017)</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="syntax">
+<span id="id1"></span><h1>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline"></a></h1>
+<div class="section" id="basic-language">
+<h2>Basic Language<a class="headerlink" href="#basic-language" title="Permalink to this headline"></a></h2>
+<div class="section" id="terms">
+<h3>Terms<a class="headerlink" href="#terms" title="Permalink to this headline"></a></h3>
+<ul>
+<li><p>Terms are either constants or variables</p></li>
+<li><p>Constants can be either symbolic constants (strings starting with some lowercase letter), string constants (quoted strings) or integers:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Ex.: pippo, “this is a string constant”, 123, …
+</pre></div>
+</div>
+</li>
+<li><p>Variables are denoted by strings starting with some uppercase letter:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Ex.: X, Pippo, THIS_IS_A_VARIABLE, White, …
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="atoms-and-literal">
+<h3>Atoms and Literal<a class="headerlink" href="#atoms-and-literal" title="Permalink to this headline"></a></h3>
+<ul>
+<li><p>A predicate atom has form <cite>p(t1,…,tn )</cite>, where <cite>p</cite> is a predicate name, <cite>t1 ,…, tn</cite> are terms, and <cite>n≥0</cite> is the arity of the predicate atom.</p></li>
+<li><p>A predicate atom p() of arity 0 is likewise represented by its predicate name p without parentheses:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Ex</span><span class="o">.</span><span class="p">:</span> <span class="n">p</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span> <span class="o">-</span> <span class="nb">next</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">q</span> <span class="o">-</span> <span class="n">i_am_an_atom</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">B</span><span class="p">,</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>An atom can be negated by means of <cite>not</cite>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Ex: not a, not p(X), …
+</pre></div>
+</div>
+</li>
+<li><p>A literal is an atom or a negated atom. In the first case it is said to be positive, while in the second it is said to be negative.</p></li>
+</ul>
+</div>
+<div class="section" id="facts">
+<h3>Facts<a class="headerlink" href="#facts" title="Permalink to this headline"></a></h3>
+<ul>
+<li><p>A ground rule with an empty body is called a fact.</p></li>
+<li><p>A fact is therefore a rule with a True body (an empty conjunction is true by definition).</p></li>
+<li><p>The implication symbol is omitted for facts:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parent</span><span class="p">(</span><span class="n">eugenio</span><span class="p">,</span> <span class="n">peppe</span><span class="p">)</span> <span class="p">:</span><span class="o">-</span> <span class="n">true</span><span class="o">.</span>
+<span class="n">parent</span><span class="p">(</span><span class="n">mario</span><span class="p">,</span> <span class="n">ciccio</span><span class="p">)</span> <span class="p">:</span><span class="o">-</span> <span class="n">true</span><span class="o">.</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>equivalently written by:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">parent</span><span class="p">(</span><span class="n">eugenio</span><span class="p">,</span> <span class="n">peppe</span><span class="p">)</span><span class="o">.</span>
+<span class="n">parent</span><span class="p">(</span><span class="n">mario</span><span class="p">,</span> <span class="n">ciccio</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+<div class="admonition caution">
+<p class="admonition-title">Caution</p>
+<p>Facts must always be true in the program answer!</p>
+</div>
+</div>
+<div class="section" id="a-program-with-comments">
+<h3>A program with comments<a class="headerlink" href="#a-program-with-comments" title="Permalink to this headline"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="n">This</span> <span class="n">line</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">comment</span><span class="o">.</span>
+<span class="n">weight</span><span class="p">(</span><span class="n">apple</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="n">gram</span><span class="p">)</span><span class="o">.</span> <span class="o">%</span><span class="n">Here</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">new</span> <span class="n">comment</span><span class="p">,</span> <span class="n">it</span> <span class="n">ends</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">row</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="costraint-and-functions">
+<h2>Costraint and Functions<a class="headerlink" href="#costraint-and-functions" title="Permalink to this headline"></a></h2>
+<div class="section" id="integrity-constraints">
+<h3>Integrity Constraints<a class="headerlink" href="#integrity-constraints" title="Permalink to this headline"></a></h3>
+<ul>
+<li><dl class="simple">
+<dt>Constraints in our framework specify conditions which must not become true in any model.</dt><dd><p>In other words, constraints are formulations of possible inconsistencies.
+This mechanism is very useful in connection with disjunctive rules.
+The disjunctive rules serve as generators for different models and the constraints are used to select only the desired ones.</p>
+</dd>
+</dl>
+</li>
+<li><p>The syntax of constraints is simple:</p>
+<blockquote>
+<div><p>They look like rules without heads.
+As with rules, constraints must meet the safety requirements.</p>
+</div></blockquote>
+</li>
+</ul>
+<p>A very well-known problem is to find a coloring of a graph, such that no two adjacent nodes (i.e. two nodes which are connected by an arc) have the same color.</p>
+<p>To formulate this problem in I-DLV, let us reconsider the coloring example from above:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">node</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="p">:</span><span class="o">-</span> <span class="n">arc</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span><span class="o">.</span>
+<span class="n">node</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span> <span class="p">:</span><span class="o">-</span> <span class="n">arc</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span><span class="o">.</span>
+
+<span class="n">color</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">red</span><span class="p">)</span> <span class="o">|</span> <span class="n">color</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">green</span><span class="p">)</span> <span class="o">|</span> <span class="n">color</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">blue</span><span class="p">)</span> <span class="p">:</span><span class="o">-</span> <span class="n">node</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>The models of this program (together with a database describing the graph) correspond to all possible colorings. We only need to add a constraint which discards colorings where two adjacent nodes have the same color:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="o">-</span> <span class="n">arc</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">),</span> <span class="n">color</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">C</span><span class="p">),</span> <span class="n">color</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">C</span><span class="p">),</span> <span class="n">X</span><span class="o">&lt;</span><span class="n">Y</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Assuming the combined code resides in 3col, the output then is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">node</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">node</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">node</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">node</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">red</span><span class="p">),</span> <span class="n">color</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">green</span><span class="p">),</span> <span class="n">color</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">red</span><span class="p">),</span> <span class="n">color</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="n">red</span><span class="p">)}</span>
+
+<span class="p">[</span><span class="o">...</span> <span class="ow">and</span> <span class="n">so</span> <span class="n">on</span> <span class="o">...</span><span class="p">]</span>
+
+<span class="p">{</span><span class="n">node</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">node</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">node</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">node</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">blue</span><span class="p">),</span> <span class="n">color</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">green</span><span class="p">),</span> <span class="n">color</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">blue</span><span class="p">),</span> <span class="n">color</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="n">red</span><span class="p">)}</span>
+<span class="p">{</span><span class="n">node</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">node</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">node</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="n">node</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span> <span class="n">color</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">blue</span><span class="p">),</span> <span class="n">color</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">green</span><span class="p">),</span> <span class="n">color</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="n">blue</span><span class="p">),</span> <span class="n">color</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="n">blue</span><span class="p">)}</span>
+</pre></div>
+</div>
+<p>Note that this program yields 24 models, while the previous coloring example led to 81 models.</p>
+</div>
+<div class="section" id="constraints-and-negation">
+<h3>Constraints and negation<a class="headerlink" href="#constraints-and-negation" title="Permalink to this headline"></a></h3>
+<p>Of course, also negation can be used in constraints:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">|</span> <span class="n">b</span><span class="o">.</span>
+<span class="p">:</span><span class="o">-</span> <span class="ow">not</span> <span class="n">a</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><cite>{a}</cite> is a model of this program, but <cite>{b}</cite> is not, since the constraint would be violated for <cite>{b}</cite>.</p>
+<p>As a comparison, a constraint with true negation:</p>
+<blockquote>
+<div><p>a | b.
+:- -a.</p>
+</div></blockquote>
+<p>Both <cite>{a}</cite> and <cite>{b}</cite> are models, since <cite>-a</cite> is not contained in any of these models.</p>
+</div>
+<div class="section" id="safety">
+<h3>Safety<a class="headerlink" href="#safety" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>A rule <cite>r</cite> is safe: <em>if each variable in the head</em>, and <em>each variable in a negative literal</em>, and <em>each variable in a comparison operator (&lt;,&lt;=, etc.)</em>
+also appears in a standard positive literal.</p></li>
+</ul>
+<p>In other words, all variables must appear at least once in the positive body.</p>
+<p><strong>Only safe rules are allowed.</strong></p>
+<p>Ex.: The following rules are unsafe:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="p">:</span><span class="o">-</span> <span class="n">a</span><span class="o">.</span>
+<span class="n">s</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span> <span class="p">:</span><span class="o">-</span> <span class="n">b</span><span class="p">(</span><span class="n">Y</span><span class="p">),</span> <span class="ow">not</span> <span class="n">r</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span>
+<span class="n">s</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="p">:</span><span class="o">-</span> <span class="ow">not</span> <span class="n">r</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span>
+<span class="n">s</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span> <span class="p">:</span><span class="o">-</span> <span class="n">b</span><span class="p">(</span><span class="n">Y</span><span class="p">),</span> <span class="n">X</span><span class="o">&lt;</span><span class="n">Y</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>In each case, an infinity of x’s can satisfy the rule, even if <cite>r</cite> is a finite relation.</p>
+</div>
+<div class="section" id="weak-constraints">
+<h3>Weak Constraints<a class="headerlink" href="#weak-constraints" title="Permalink to this headline"></a></h3>
+<p>Syntax:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>:~ B [ W@P, T 1 …T n ].
+</pre></div>
+</div>
+<p><strong>Satisfy B if possible; if not, pay W at priority P for each</strong>
+<strong>distinct tuple of terms</strong> <code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">1</span> <span class="pre">…T</span> <span class="pre">n</span></code> .</p>
+<p>projecting</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="o">~</span> <span class="n">p</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span><span class="o">.</span> <span class="p">[</span> <span class="mi">1</span><span class="p">:</span><span class="mi">1</span> <span class="p">]</span>
+</pre></div>
+</div>
+<p>is equivalent to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="o">~</span> <span class="n">p</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span><span class="o">.</span> <span class="p">[</span> <span class="mi">1</span><span class="nd">@1</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>while:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="o">~</span> <span class="n">p</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span><span class="o">.</span> <span class="p">[</span> <span class="mi">1</span><span class="nd">@1</span><span class="p">,</span> <span class="n">X</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><strong>is different</strong>, and corresponds to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="o">~</span> <span class="n">q</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span> <span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">q</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="p">:</span><span class="o">-</span> <span class="n">p</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+<ul>
+<li><p>Example</p>
+<blockquote>
+<div><p>A:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="o">~</span> <span class="n">p</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span><span class="o">.</span> <span class="p">[</span> <span class="mi">1</span><span class="nd">@1</span><span class="p">,</span> <span class="n">X</span><span class="p">]</span>
+<span class="n">equivalent</span> <span class="n">to</span>
+<span class="p">:</span><span class="o">~</span> <span class="n">q</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span> <span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">q</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="p">:</span><span class="o">-</span> <span class="n">p</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>B:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="o">~</span> <span class="n">p</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span><span class="o">.</span> <span class="p">[</span> <span class="mi">1</span><span class="nd">@1</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">]</span>
+<span class="n">equivalent</span> <span class="n">to</span>
+<span class="p">:</span><span class="o">~</span> <span class="n">p</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span> <span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<p>With facts:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span> <span class="n">p</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Costs:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="p">:</span> <span class="n">costs</span> <span class="p">[</span><span class="mi">1</span><span class="nd">@1</span><span class="p">]</span><span class="o">.</span>
+<span class="n">B</span><span class="p">:</span> <span class="n">costs</span> <span class="p">[</span><span class="mi">2</span><span class="nd">@1</span><span class="p">]</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="aggregate-function">
+<h3>Aggregate function<a class="headerlink" href="#aggregate-function" title="Permalink to this headline"></a></h3>
+<ol class="arabic">
+<li><p><code class="docutils literal notranslate"><span class="pre">#count</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nodeNumber</span><span class="p">(</span><span class="n">N</span><span class="p">):</span><span class="o">-</span><span class="c1">#count{ X: node(X)}=N.</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#sum</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="o">-</span><span class="n">node</span><span class="p">(</span><span class="n">X</span><span class="p">),</span><span class="c1">#sum{SumEdgeValue,Node: node(Node), edge(X,Node,SumEdgeValue)}=0.</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#min</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">minAge</span><span class="p">(</span><span class="n">N</span><span class="p">):</span><span class="o">-</span><span class="c1">#min{X,Name: person(Name,X)}=N.</span>
+</pre></div>
+</div>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#max</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="o">-</span><span class="c1">#max{X,Name: person(Name,X)}=Max, minAge(Min), Max-Min=0.</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="modelling-and-programming-techniques">
+<h2>Modelling and Programming Techniques<a class="headerlink" href="#modelling-and-programming-techniques" title="Permalink to this headline"></a></h2>
+<div class="section" id="recursion">
+<h3>Recursion<a class="headerlink" href="#recursion" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>In mathematics and computer science, a recursive definition, or inductive definition, is used to define the elements in a set in terms of other elements in the set.
+Some examples of recursively-definable objects include factorials, natural numbers, Fibonacci numbers, and the Cantor ternary set.</p></li>
+</ul>
+<p>For example of Recursion:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#id2"><span class="std std-ref">Same generation</span></a>.</p></li>
+</ul>
+</div>
+<div class="section" id="transitive-closure">
+<h3>Transitive Closure<a class="headerlink" href="#transitive-closure" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>In computer science, the concept of transitive closure can be thought of as constructing a data structure that makes it possible to answer reachability questions.
+That is, can one get <strong>from</strong> <code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">a</span></code> <strong>to</strong> <code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">d</span></code> in one or more hops? A binary relation tells you only that <code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">a</span></code> is connected to <code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">b</span></code>, and that <code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">b</span></code> is connected to <code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">c</span></code>, etc.
+After the transitive closure is constructed, in an <code class="docutils literal notranslate"><span class="pre">O(1)</span></code> operation one may determine that <code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">d</span></code> <strong>is reachable from</strong> <code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">a</span></code>.
+The data structure is typically stored as a matrix, so if <code class="docutils literal notranslate"><span class="pre">matrix[1][4]</span> <span class="pre">=</span> <span class="pre">1</span></code>, then it is the case that <code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">1</span></code> can reach <code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">4</span></code> through one or more hops.</p></li>
+</ul>
+<p>The transitive closure of the adjacency relation of a directed acyclic graph (DAG) is the reachability relation of the DAG and a strict partial order.</p>
+<p>For example of Transitive Clousure:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#transitiveclousure"><span class="std std-ref">Reachability</span></a>.</p></li>
+</ul>
+</div>
+<div class="section" id="the-gco">
+<h3>The GCO<a class="headerlink" href="#the-gco" title="Permalink to this headline"></a></h3>
+<p><strong>Guess/Check/Optimize</strong></p>
+<ul class="simple">
+<li><p>Many problems can be solved in a natural manner by using this
+declarative programming technique.</p></li>
+<li><p>The power of disjunctive rules allows to express problems which are
+more complex than NP, and the (optional) separation of a fixed,
+non-ground program from an input database allows to do so in a uniform way over varying instances.</p></li>
+</ul>
+<p>Generalization of the Guess and Check method
+to express optimization problems
+A program is made of 3 Modules:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[Guessing</span> <span class="pre">Part]</span></code> defines the search space</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[Checking</span> <span class="pre">Part]</span></code> checks solution admissibility</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[Optimizing</span> <span class="pre">Part]</span></code> specifies a preference criterion (by means of weak constraints)</p></li>
+</ul>
+<div class="section" id="guess">
+<h4>Guess<a class="headerlink" href="#guess" title="Permalink to this headline"></a></h4>
+<ul>
+<li><p>Defines the search space.</p></li>
+<li><p>Such that answer sets represent “solution candidates”.</p></li>
+<li><p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">inPath</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span> <span class="o">|</span> <span class="n">outPath</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span> <span class="p">:</span><span class="o">-</span> <span class="n">arc</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Z</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="check">
+<h4>Check<a class="headerlink" href="#check" title="Permalink to this headline"></a></h4>
+<ul>
+<li><p>Filter the solution candidates.</p></li>
+<li><p>Represent the admissible solutions.</p></li>
+<li><p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="o">-</span> <span class="n">inPath</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">),</span> <span class="n">inPath</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y1</span><span class="p">),</span> <span class="n">Y</span> <span class="o">&lt;</span> <span class="n">Y1</span><span class="o">.</span>
+<span class="p">:</span><span class="o">-</span> <span class="n">inPath</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">),</span> <span class="n">inPath</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span><span class="n">Y</span><span class="p">),</span> <span class="n">X</span> <span class="o">&lt;</span> <span class="n">X1</span><span class="o">.</span>
+<span class="p">:</span><span class="o">-</span> <span class="n">node</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="ow">not</span> <span class="n">reached</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="optimize">
+<h4>Optimize<a class="headerlink" href="#optimize" title="Permalink to this headline"></a></h4>
+<ul>
+<li><p>That specifies a quantitative cost evaluation of solutions.</p></li>
+<li><p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="o">~</span> <span class="n">inPath</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">),</span> <span class="n">arc</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">C</span><span class="p">)</span><span class="o">.</span> <span class="p">[</span><span class="n">C</span><span class="nd">@1</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">C</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>For example of GCO or GC:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#hamp"><span class="std std-ref">Hamiltonian Path</span></a>.</p></li>
+<li><p><a class="reference internal" href="#mst"><span class="std std-ref">Minimum Spanning Tree</span></a>.</p></li>
+<li><p><a class="reference internal" href="#col"><span class="std std-ref">3-colorability</span></a>.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="annotations">
+<h3>Annotations<a class="headerlink" href="#annotations" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>I-DLV introduces a new special feature for facilitating system customization and tuning: annotations of ASP code.
+I-DLV annotations allow to give explicit directions on the internal grounding process, at a more fine-grained level with respect to the command-line options:
+they <strong>annotate</strong> the ASP code in a Java-like fashion while embedded in comments, so that the resulting programs can still be given as input to other ASP systems, without any modification.</p></li>
+<li><p>Syntactically, all annotation start with the prefix <code class="docutils literal notranslate"><span class="pre">%&#64;</span></code> and end with a dot (<code class="docutils literal notranslate"><span class="pre">.</span></code>).
+Currently, I-DLV supports annotations for customizing two of the major aspects of the grounding process, body ordering and indexing as well as further optimizations intervening in its grounding process.</p></li>
+</ul>
+<p>A specific body ordering strategy can be explicitly requested for any rule, simply preceding it with the line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="nd">@rule_ordering</span><span class="p">(</span><span class="nd">@value</span><span class="o">=</span><span class="n">Ordering_Type</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>where Ordering_Type is a number representing an ordering strategy. In addition, it is possible to specify a particular partial order among atoms, no matter the employed ordering strategy, by means of before and after directives. For instance, in the next example I-DLV is forced to always put literals <code class="docutils literal notranslate"><span class="pre">a(X,Y)</span> <span class="pre">and</span> <span class="pre">X</span> <span class="pre">=</span> <span class="pre">#count{Z</span> <span class="pre">:</span> <span class="pre">c(Z)}}</span></code> before literal <code class="docutils literal notranslate"><span class="pre">f(X,Y</span> <span class="pre">)</span></code> , whatever the order chosen:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="nd">@rule_partial_order</span><span class="p">(</span><span class="nd">@before</span><span class="o">=</span><span class="p">{</span><span class="n">a</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">),</span><span class="n">X</span><span class="o">=</span><span class="c1">#count{Z:c(Z)}},@after={f(X,Y)}).</span>
+</pre></div>
+</div>
+<p>As for indexing, directives on a per-atom basis can be given; the next annotation, for instance, request that, in the subsequent rule, atom <code class="docutils literal notranslate"><span class="pre">a(X,Y,Z)</span></code> is indexed, if possible, with a double-index the first and third arguments:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="nd">@rule_atom_indexed</span><span class="p">(</span><span class="nd">@atom</span><span class="o">=</span><span class="n">a</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">,</span><span class="n">Z</span><span class="p">),</span><span class="nd">@arguments</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">,</span><span class="mi">2</span><span class="p">})</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>The projection rewriting can be customized for any rule, by preceding it with the line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="nd">@rule_projection</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">n</span></code> can either <code class="docutils literal notranslate"><span class="pre">0</span></code>, <code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">2</span></code>, as for the command-line projection option described above.</p>
+<p>The rewriting arithmetic terms, disabled by default, can be enabled for any rule, by specifying before it the following annotation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="nd">@rule_rewrite_arith</span><span class="p">()</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Similarly, the aligning substitution technique disabled by default, can be enabled for a specific rule by preceding it with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="nd">@rule_align_substitutions</span><span class="p">()</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>while, for enabling the look-ahead technique, the annotation to use is the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="nd">@rule_look_ahead</span><span class="p">()</span><span class="o">.</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Multiple preferences can be expressed via different annotations; in case of conflicts, priority is given to the first.
+In addition, preferences can also be specified at a <strong>global</strong> scope, by replacing the rule directive with the global one.
+While a rule annotation must precede the intended rule, global annotations can appear on any line in the input program.
+Both global and rule annotations can be expressed in the same program; in case of overlap on a particular rule/setting, priority is given to the rule ones.</p></li>
+</ul>
+</div>
+<div class="section" id="list">
+<h3>List<a class="headerlink" href="#list" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>A list is a binary function denoted with a special syntax: <code class="docutils literal notranslate"><span class="pre">[H|T]</span></code></p></li>
+<li><p>Where the first argument <strong>«H»</strong> is a term, called the
+head of the list, and the second argument <strong>«T»</strong> is a list.</p></li>
+</ul>
+<p>In addition, a list can be represented by explicitly
+listing its elements.</p>
+<blockquote>
+<div><p>[ a, b, c ] = [ a | [ b, c ] ] = [ a | [ b | [ c ] ] ] = [a|[b|[c|[]]]]</p>
+</div></blockquote>
+<ul>
+<li><p>LIST TERMS</p>
+<blockquote>
+<div><p>A list term can be of the two forms:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="p">[</span> <span class="n">t1</span><span class="p">,</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="p">,</span> <span class="n">tn</span> <span class="p">],</span> <span class="n">where</span> <span class="n">t1</span><span class="p">,</span> <span class="o">.</span> <span class="o">.</span> <span class="o">.</span> <span class="p">,</span> <span class="n">tn</span> <span class="n">are</span> <span class="n">terms</span><span class="p">;</span>
+<span class="o">*</span> <span class="p">[</span> <span class="n">h</span> <span class="o">|</span> <span class="n">t</span> <span class="p">],</span> <span class="n">where</span> <span class="n">h</span> <span class="p">(</span><span class="n">the</span> <span class="n">head</span> <span class="n">of</span> <span class="n">the</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">term</span><span class="p">,</span> <span class="ow">and</span> <span class="n">t</span> <span class="p">(</span><span class="n">the</span> <span class="n">tail</span> <span class="n">of</span> <span class="n">the</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">is</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">term</span><span class="o">.</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*</span> <span class="n">The</span> <span class="n">term</span> <span class="p">[</span> <span class="n">a</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">a</span> <span class="p">]</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">atom</span> <span class="n">palindromic</span><span class="p">([</span><span class="n">a</span><span class="p">,</span><span class="n">d</span><span class="p">,</span><span class="n">a</span><span class="p">])</span>
+<span class="o">*</span> <span class="p">[</span> <span class="n">jan</span><span class="p">,</span><span class="n">feb</span><span class="p">,</span><span class="n">mar</span> <span class="p">]</span>
+<span class="o">*</span> <span class="p">[</span><span class="n">jan</span> <span class="o">|</span> <span class="p">[</span> <span class="n">feb</span><span class="p">,</span><span class="n">mar</span><span class="p">,</span><span class="n">apr</span><span class="p">,</span><span class="n">may</span><span class="p">,</span><span class="n">jun</span> <span class="p">]</span> <span class="p">]</span>
+<span class="o">*</span> <span class="p">[</span> <span class="p">[</span><span class="n">jan</span><span class="p">,</span><span class="mi">31</span><span class="p">]</span> <span class="o">|</span> <span class="p">[</span> <span class="p">[</span> <span class="n">feb</span><span class="p">,</span><span class="mi">28</span> <span class="p">],</span> <span class="p">[</span> <span class="n">mar</span><span class="p">,</span><span class="mi">31</span> <span class="p">],</span> <span class="p">[</span> <span class="n">apr</span><span class="p">,</span><span class="mi">30</span> <span class="p">],</span> <span class="p">[</span> <span class="n">may</span><span class="p">,</span><span class="mi">31</span><span class="p">],</span> <span class="p">[</span> <span class="n">jun</span><span class="p">,</span><span class="mi">30</span> <span class="p">]</span> <span class="p">]</span> <span class="p">]</span><span class="o">.</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>I-DLV (and DLV2) comes with a rich library of built-in predicates for list manipulation.</p>
+<p>A built-in atom is of the form:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&amp;p(t 0 ,.., t n ; u 0 ,…, u m )
+</pre></div>
+</div>
+<p>where n,m &gt;= 0</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">t</span> <span class="pre">0</span> <span class="pre">,..,</span> <span class="pre">t</span> <span class="pre">n</span></code> are input terms, and are separated from the output terms <code class="docutils literal notranslate"><span class="pre">u</span> <span class="pre">0</span> <span class="pre">,…,</span> <span class="pre">u</span> <span class="pre">m</span></code> by a semicolon (“;”);</p></li>
+<li><p>an input/output term can be either a constant or a variable.</p></li>
+</ul>
+<p>Intuitively, output terms are computed on the basis of the input
+ones, according to a semantics which is defined “a priori” for
+each predicate, as reported next.</p>
+<table class="colwidths-given docutils align-default" id="id3">
+<caption><span class="caption-text">List</span><a class="headerlink" href="#id3" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Atom</p></th>
+<th class="head"><p>Behaviour in Assignment</p></th>
+<th class="head"><p>Behaviour in Comparison</p></th>
+<th class="head"><p>Constraints</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;append(L1,L2;LR)</span></code></p></td>
+<td><p>appends L2 to L1, the resulting list is assigned to LR</p></td>
+<td><p>true iff LR is equal to the list obtained appending L2 to L1</p></td>
+<td><p>L1 and L2 must be list terms, LR must be either a variable or a list term</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;delNth(L,P;LR)</span></code></p></td>
+<td><p>deletes the element at position P in L, the resulting list is assigned to LR</p></td>
+<td><p>true iff LR is equal to the list obtained deleting the P-th element from L</p></td>
+<td><p>L must be a list terms, LR must be either a variable or a list term and P must be an integer s.t. 0&lt;P</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;flatten(L;LR)</span></code></p></td>
+<td><p>flattens L and assigns the resulting list to LR</p></td>
+<td><p>true iff LR is equal to the list obtained by flattening the list term L</p></td>
+<td><p>L must be a list term, LR must be either a variable or a list term</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;head(L;E)</span></code></p></td>
+<td><p>assigns the head of L to E</p></td>
+<td><p>true iff E is equal to the head of L</p></td>
+<td><p>L must be a list term</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;insLast(L,E;LR)</span></code></p></td>
+<td><p>appends E to L, the resulting list is assigned to LR</p></td>
+<td><p>true iff LR is equal to the list obtained appending E to L</p></td>
+<td><p>L must be a list term, LR must be either a variable or a list term</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;insNth(L,E,P;LR)</span></code></p></td>
+<td><p>inserts E at position P of L,the resulting list is assigned to LR</p></td>
+<td><p>is true iff LR is a list obtained by inserting the term E into L at position P</p></td>
+<td><p>L must be a list term, LR must be either a variable or a list term, P must be an integer s.t P&gt;O</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;last(L;E)</span></code></p></td>
+<td><p>assigns the last element of L to E</p></td>
+<td><p>true iff E is equal to the last element of L</p></td>
+<td><p>L must be a list term</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;length(L;Z)</span></code></p></td>
+<td><p>assigns the length of L to Z</p></td>
+<td><p>true iff length(L)&gt;0 holds</p></td>
+<td><p>L must be a list term, Z must be either a variable or an integer</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;member(E,L;)</span></code></p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>true iff L contains the term E</p></td>
+<td><p>L must be a list term</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;memberNth(L,P;E)</span></code></p></td>
+<td><p>assigns to E the term contained at position P of L</p></td>
+<td><p>true iff E is equal to the element at position P in L</p></td>
+<td><p>L must be a list terms and P must be an integer s.t. P&gt;0</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;reverse(L;LR)</span></code></p></td>
+<td><p>computes the reverse of L, the reversed string is assigned to LR</p></td>
+<td><p>true iff LR is equal to the reverse of L</p></td>
+<td><p>L must be a list term, LR must be either a variable or a list term</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;reverse_r(L;LR)</span></code></p></td>
+<td><p>computes the reverse of L and of all nested list terms, the reversed L is assigned to LR</p></td>
+<td><p>true iff LR is equal to the list obtained by reversing L and all nested list terms</p></td>
+<td><p>L must be a list term, LR must be either a variable or a list term</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;delete(E,L;LR)</span></code></p></td>
+<td><p>delete all occurrences of E in L, the resulting list is assigned to LR</p></td>
+<td><p>true iff LR is equal to the list obtained by removing all occurrences of E in L</p></td>
+<td><p>L must be a list term, LR must be either a variable or a list term</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;delete_r(E,L;LR)</span></code></p></td>
+<td><p>delete all occurrences of E in L and in all the nested list, the resulting list is assigned to LR</p></td>
+<td><p>true iff LR is equal to the list obtained by removing all occurrences of E in L and in all nested list terms</p></td>
+<td><p>L must be list term, LR must be either a variable or a list term</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;subList(L1,L2;)</span></code></p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>true iff L1 is a subL of L2</p></td>
+<td><p>L1 and L2 must be list terms</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;tail(L;E)</span></code></p></td>
+<td><p>assigns the tail of L to E</p></td>
+<td><p>true iff E is equal to the tail of L</p></td>
+<td><p>L must be a list term</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="section" id="example">
+<h1>Example<a class="headerlink" href="#example" title="Permalink to this headline"></a></h1>
+<div class="section" id="same-generation">
+<span id="id2"></span><h2>Same generation<a class="headerlink" href="#same-generation" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Given a parent-child relationship, represented by an acyclic directed graph,
+we want to find all pairs of persons belonging to the same generation.</p></li>
+<li><p>Two persons are of the same generation, if either they are siblings,
+or they are children of two persons of the same generation.</p></li>
+<li><p>If input is encoded by a relation <code class="docutils literal notranslate"><span class="pre">parent(A,B)</span></code>,
+where a fact <code class="docutils literal notranslate"><span class="pre">parent(a,</span> <span class="pre">b)</span></code> states that <code class="docutils literal notranslate"><span class="pre">a</span></code> is <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">parent</span> <span class="pre">of</span> <span class="pre">b</span></code>.</p></li>
+<li><p>The solution can be encoded by the following program, which
+computes a relation <code class="docutils literal notranslate"><span class="pre">ancestor(A,B)</span></code> containing all facts such that A is of the same generation as B:</p></li>
+</ul>
+<p>If we want to define the relation of arbitrary ancestors rather than grandparents, we make use of recursion:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ancestor</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">)</span> <span class="p">:</span><span class="o">-</span> <span class="n">parent</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">)</span><span class="o">.</span>
+<span class="n">ancestor</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">C</span><span class="p">)</span> <span class="p">:</span><span class="o">-</span> <span class="n">ancestor</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">),</span> <span class="n">ancestor</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>An equivalent representation is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ancestor</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">)</span> <span class="p">:</span><span class="o">-</span> <span class="n">parent</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">)</span><span class="o">.</span>
+<span class="n">ancestor</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">C</span><span class="p">)</span> <span class="p">:</span><span class="o">-</span> <span class="n">ancestor</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="n">B</span><span class="p">),</span> <span class="n">parent</span><span class="p">(</span><span class="n">B</span><span class="p">,</span><span class="n">C</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="reachability">
+<span id="transitiveclousure"></span><h2>Reachability<a class="headerlink" href="#reachability" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Given a finite directed graph <code class="docutils literal notranslate"><span class="pre">G</span> <span class="pre">=</span> <span class="pre">(N,A)</span></code>,
+we want to compute all pairs of nodes <code class="docutils literal notranslate"><span class="pre">(a,</span> <span class="pre">b)</span> <span class="pre">∈</span> <span class="pre">N</span> <span class="pre">×</span> <span class="pre">N</span></code> such that <code class="docutils literal notranslate"><span class="pre">b</span></code> is reachable from <code class="docutils literal notranslate"><span class="pre">a</span></code> through a not empty sequence of arcs in A.</p></li>
+<li><p>In other words, the problem amounts to computing the transitive closure of the relation A.
+Suppose we are representing a graph by a relation <code class="docutils literal notranslate"><span class="pre">edge(X,Y)</span></code>.</p></li>
+</ul>
+<p>I want to express the query: Find all nodes reachable from the others.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">path</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span> <span class="p">:</span><span class="o">-</span> <span class="n">edge</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span><span class="o">.</span>
+<span class="n">path</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span> <span class="p">:</span><span class="o">-</span> <span class="n">path</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Z</span><span class="p">),</span> <span class="n">path</span><span class="p">(</span><span class="n">Z</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="hamiltonian-path">
+<span id="hamp"></span><h2>Hamiltonian Path<a class="headerlink" href="#hamiltonian-path" title="Permalink to this headline"></a></h2>
+<ul>
+<li><p>Given a directed graph <code class="docutils literal notranslate"><span class="pre">G</span> <span class="pre">=</span> <span class="pre">(N,A)</span></code> and <code class="docutils literal notranslate"><span class="pre">a</span></code> node <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">∈</span> <span class="pre">N</span></code> of this graph,
+does there exist a path in G starts from <code class="docutils literal notranslate"><span class="pre">a</span></code> and passing through <code class="docutils literal notranslate"><span class="pre">each</span> <span class="pre">node</span> <span class="pre">in</span> <span class="pre">N</span></code> exactly once?</p></li>
+<li><p>If the graph G is specified by means of facts over predicates <code class="docutils literal notranslate"><span class="pre">node</span> <span class="pre">(unary)</span></code> and <code class="docutils literal notranslate"><span class="pre">arc</span> <span class="pre">(binary)</span></code>,
+and the starting node a is specified by the predicate <code class="docutils literal notranslate"><span class="pre">start</span> <span class="pre">(unary)</span></code>, then, the following <strong>GC</strong> program Php encodes a solution to the problem:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>% Guessing Part (3 rules)
+
+% The two disjunctive rules guess a subset S of the arcs to be in the path.
+inPath(X, Y) | outPath(X, Y) :– start(X), arc(X, Y).
+inPath(X, Y) | outPath(X, Y) :– reached(X), arc(X, Y).
+
+% Transitive property, or that all node inPath are reachable from start node.
+reached(X) :– inPath(Y, X).
+
+% Checking Part (3 rules)
+
+% There must not be two arcs ending in the same node.
+:– inPath(X, Y), inPath(X, Y1), Y != Y1.
+
+% There must not be two arcs starting at the same node.
+:– inPath(X, Y), inPath(X1, Y), X != X1.
+
+% All nodes in the graph are reached from the starting node.
+:– node(X), not reached(X), not start(X).
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="minimum-spanning-tree">
+<span id="mst"></span><h2>Minimum Spanning Tree<a class="headerlink" href="#minimum-spanning-tree" title="Permalink to this headline"></a></h2>
+<ul>
+<li><p>Given a weighted graph by means of <code class="docutils literal notranslate"><span class="pre">edge(Node1,Node2,Cost)</span></code>,
+and <code class="docutils literal notranslate"><span class="pre">node(N)</span></code>, compute a tree that starts at a root node,
+spans that graph, and has minimum cost, then, the following <strong>GCO</strong> program Pmst encodes a solution to the problem:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>% Guess the edges that are part of the tree:
+inTree(X,Y) | outTree(X,Y) :- edge(X,Y,C).
+
+% Check that we are really dealing with a tree!
+:- root(X), inTree(Y,X).
+:- inTree(X,Y), inTree(X1,Y), X != X1.
+
+% And the tree is connected
+:- node(X), not reached(X).
+
+% Minimize the cost of the tree
+:~ inTree(X,Y), edge(X,Y,C). [C@1, X,Y,C]
+
+reached(X) :- root(X).
+reached(X) :- reached(Y), inTree(Y,X).
+</pre></div>
+</div>
+</li>
+</ul>
+</div>
+<div class="section" id="colorability">
+<span id="col"></span><h2>3-colorability<a class="headerlink" href="#colorability" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>Given a graph <code class="docutils literal notranslate"><span class="pre">G</span> <span class="pre">=</span> <span class="pre">(N,A)</span></code> and <code class="docutils literal notranslate"><span class="pre">a</span></code> node <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">∈</span> <span class="pre">N</span></code> of this graph, it’s a 3-colorability?</p></li>
+<li><p>Now, we can see three different and equivalent approaches:</p></li>
+</ul>
+<div class="section" id="first-mode">
+<h3>First Mode<a class="headerlink" href="#first-mode" title="Permalink to this headline"></a></h3>
+<p>With <strong>GC</strong>, we extrapolate the basic rules for solving the Problem P3c:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">Guessing</span> <span class="n">Part</span>
+<span class="o">%</span> <span class="n">Guess</span> <span class="n">the</span> <span class="n">color</span> <span class="n">of</span> <span class="n">the</span> <span class="n">node</span><span class="o">.</span>
+<span class="n">col</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">red</span><span class="p">)</span> <span class="o">|</span> <span class="n">col</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">blue</span><span class="p">)</span> <span class="o">|</span> <span class="n">col</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">green</span><span class="p">)</span> <span class="p">:</span><span class="o">-</span> <span class="n">node</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span>
+
+<span class="o">%</span> <span class="n">Checking</span> <span class="n">Part</span>
+<span class="o">%</span> <span class="n">No</span> <span class="n">adjacent</span> <span class="n">nodes</span> <span class="k">with</span> <span class="n">the</span> <span class="n">same</span> <span class="n">color</span><span class="o">.</span>
+<span class="p">:</span><span class="o">-</span> <span class="n">edge</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">),</span> <span class="n">col</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">C</span><span class="p">),</span> <span class="n">col</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">C</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="second-mode">
+<h3>Second Mode<a class="headerlink" href="#second-mode" title="Permalink to this headline"></a></h3>
+<p>With <strong>GC</strong>, we can solve this problem P3c with one disjunctive rule for color:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">Guessing</span> <span class="n">Part</span>
+<span class="o">%</span> <span class="n">The</span> <span class="n">three</span> <span class="n">disjunctive</span> <span class="n">rules</span> <span class="n">guess</span> <span class="n">a</span> <span class="n">color</span> <span class="n">C</span> <span class="n">to</span> <span class="n">node</span> <span class="n">X</span><span class="o">.</span>
+<span class="n">col</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">red</span><span class="p">)</span> <span class="o">|</span> <span class="n">ncol</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">red</span><span class="p">)</span> <span class="p">:</span><span class="o">-</span> <span class="n">node</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span>
+<span class="n">col</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">yellow</span><span class="p">)</span> <span class="o">|</span> <span class="n">ncol</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">yellow</span><span class="p">)</span> <span class="p">:</span><span class="o">-</span> <span class="n">node</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span>
+<span class="n">col</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">green</span><span class="p">)</span> <span class="o">|</span> <span class="n">ncol</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">green</span><span class="p">)</span> <span class="p">:</span><span class="o">-</span> <span class="n">node</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span>
+
+<span class="o">%</span> <span class="n">Checking</span> <span class="n">Part</span>
+<span class="o">%</span> <span class="n">No</span> <span class="n">adjacent</span> <span class="n">nodes</span> <span class="k">with</span> <span class="n">the</span> <span class="n">same</span> <span class="n">color</span><span class="o">.</span>
+<span class="p">:</span><span class="o">-</span> <span class="n">edge</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">),</span> <span class="n">col</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">C</span><span class="p">),</span> <span class="n">col</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">C</span><span class="p">)</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="third-mode">
+<h3>Third Mode<a class="headerlink" href="#third-mode" title="Permalink to this headline"></a></h3>
+<p>In fine, with <strong>GC</strong>, we use a different approach for solving the Problem P3c:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="n">Guessing</span> <span class="n">Part</span>
+<span class="o">%</span> <span class="n">Given</span> <span class="n">a</span> <span class="n">node</span> <span class="n">X</span> <span class="ow">and</span> <span class="n">a</span> <span class="n">color</span> <span class="n">C</span><span class="p">,</span> <span class="n">color</span> <span class="n">X</span> <span class="k">with</span> <span class="n">C</span> <span class="ow">or</span> <span class="ow">not</span>
+<span class="n">col</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span> <span class="o">|</span> <span class="n">ncol</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span> <span class="p">:</span><span class="o">-</span> <span class="n">node</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">color</span><span class="p">(</span><span class="n">C</span><span class="p">)</span><span class="o">.</span>
+
+<span class="o">%</span> <span class="n">Checking</span> <span class="n">Part</span>
+<span class="o">%</span> <span class="n">No</span> <span class="n">adjacent</span> <span class="n">nodes</span> <span class="k">with</span> <span class="n">the</span> <span class="n">same</span> <span class="n">color</span>
+<span class="p">:</span><span class="o">-</span> <span class="n">edge</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">),</span> <span class="n">col</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">C</span><span class="p">),</span> <span class="n">col</span><span class="p">(</span><span class="n">Y</span><span class="p">,</span><span class="n">C</span><span class="p">)</span><span class="o">.</span>
+
+<span class="o">%</span> <span class="n">All</span> <span class="n">nodes</span> <span class="n">must</span> <span class="n">be</span> <span class="n">colored</span>
+<span class="n">colored</span><span class="p">(</span><span class="n">X</span><span class="p">):</span><span class="o">-</span> <span class="n">col</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span><span class="o">.</span>
+<span class="p">:</span><span class="o">-</span> <span class="n">node</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="ow">not</span> <span class="n">colored</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span>
+
+<span class="o">%</span> <span class="n">Only</span> <span class="n">one</span> <span class="n">color</span> <span class="n">per</span> <span class="n">node</span>
+<span class="p">:</span><span class="o">-</span> <span class="n">col</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">C1</span><span class="p">),</span> <span class="n">col</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">C2</span><span class="p">),</span> <span class="n">C1</span><span class="o">!=</span><span class="n">C2</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="I-DLV" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Advanced/advanced.html" class="btn btn-neutral float-right" title="Download" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, ArtemSavka96.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

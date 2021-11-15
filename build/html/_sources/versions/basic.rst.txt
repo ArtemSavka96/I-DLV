@@ -1,0 +1,387 @@
+Basic Version
+++++++++++++++++++++++++
+
+Terms
+===================
+
+* Terms are either constants or variables
+* Constants can be either symbolic constants (strings starting with some lowercase letter), string constants (quoted strings) or integers::
+
+	Ex.: pippo, “this is a string constant”, 123, …
+	
+* Variables are denoted by strings starting with some uppercase letter::
+
+	Ex.: X, Pippo, THIS_IS_A_VARIABLE, White, …
+
+Atoms and Literal
+===================
+
+* A predicate atom has form `p(t1,…,tn )`, where `p` is a predicate name, `t1 ,…, tn` are terms, and `n≥0` is the arity of the predicate atom. 
+
+* A predicate atom p() of arity 0 is likewise represented by its predicate name p without parentheses::
+
+	Ex.: p(X,Y) - next(1,2) - q - i_am_an_atom(1,2,a,B,X)
+
+* An atom can be negated by means of `not`::
+
+	Ex: not a, not p(X), …
+	
+* A literal is an atom or a negated atom. In the first case it is said to be positive, while in the second it is said to be negative.
+
+
+Facts
+===================
+
+
+* A ground rule with an empty body is called a fact.
+* A fact is therefore a rule with a True body (an empty conjunction is true by definition).
+* The implication symbol is omitted for facts::
+
+	parent(eugenio, peppe) :- true.
+	parent(mario, ciccio) :- true.
+	
+
+equivalently written by::
+
+	parent(eugenio, peppe).
+	parent(mario, ciccio).
+
+.. caution::
+
+	Facts must always be true in the program answer!
+
+A program with comments
+=================================
+
+:: 
+
+          %This line is a comment.
+          weight(apple,100,gram). %Here is a new comment, it ends in this row.
+        
+
+
+Integrity Constraints
+==========================
+
+Constraints in our framework specify conditions which must not become true in any model. 
+In other words, constraints are formulations of possible inconsistencies. 
+This mechanism is very useful in connection with disjunctive rules. 
+The disjunctive rules serve as generators for different models and the constraints are used to select only the desired ones.
+
+The syntax of constraints is simple:
+			
+	They look like rules without heads. 
+	As with rules, constraints must meet the safety requirements.
+
+A very well-known problem is to find a coloring of a graph, such that no two adjacent nodes (i.e. two nodes which are connected by an arc) have the same color.
+
+To formulate this problem in I-DLV, let us reconsider the coloring example from above::
+
+	  node(X) :- arc(X,Y).
+	  node(Y) :- arc(X,Y).
+
+	  color(X,red) | color(X,green) | color(X,blue) :- node(X).
+	
+
+The models of this program (together with a database describing the graph) correspond to all possible colorings. We only need to add a constraint which discards colorings where two adjacent nodes have the same color::
+
+	  :- arc(X,Y), color(X,C), color(Y,C), X<Y.
+	
+
+Assuming the combined code resides in 3col, the output then is::
+
+	  {node(1), node(2), node(3), node(4), color(1,red), color(2,green), color(3,red), color(4,red)}
+
+	  [... and so on ...]
+	  
+	  {node(1), node(2), node(3), node(4), color(1,blue), color(2,green), color(3,blue), color(4,red)}
+	  {node(1), node(2), node(3), node(4), color(1,blue), color(2,green), color(3,blue), color(4,blue)}
+	
+
+Note that this program yields 24 models, while the previous coloring example led to 81 models. 
+ 
+Constraints and negation
+==========================
+
+Of course, also negation can be used in constraints::
+
+            a | b.
+            :- not a.
+          
+
+`{a}` is a model of this program, but `{b}` is not, since the constraint would be violated for `{b}`.
+
+As a comparison, a constraint with true negation:
+
+            a | b.
+            :- -a.
+          
+
+Both `{a}` and `{b}` are models, since `-a` is not contained in any of these models.  
+
+Safety
+==========================
+
+A rule `r` is safe: *if each variable in the head*, and *each variable in a negative literal*, and *each variable in a comparison operator (<,<=, etc.)*
+also appears in a standard positive literal. 
+In other words, all variables must appear at least once in the positive body.
+
+**Only safe rules are allowed.**
+
+Ex.: The following rules are unsafe::
+
+		s(X) :- a.
+		s(Y) :- b(Y), not r(X).
+		s(X) :- not r(X).
+		s(Y) :- b(Y), X<Y.
+
+In each case, an infinity of x’s can satisfy the rule, even if `r` is a finite relation.
+
+Aggregate function
+==========================
+
+#. ``#count``::
+
+	nodeNumber(N):-#count{ X: node(X)}=N.	
+	
+#. ``#sum``::
+
+	:-node(X),#sum{SumEdgeValue,Node: node(Node), edge(X,Node,SumEdgeValue)}=0.
+	
+#. ``#min``::
+
+	minAge(N):-#min{X,Name: person(Name,X)}=N.		
+	
+#. ``#max``::
+
+	:-#max{X,Name: person(Name,X)}=Max, minAge(Min), Max-Min=0.
+
+
+Weak Constraints
+==========================
+
+Syntax::
+
+	:~ B [ W@P, T 1 …T n ].
+
+**Satisfy B if possible; if not, pay W at priority P for each**
+**distinct tuple of terms** ``T 1 …T n`` .
+
+projecting
+
+:: 
+
+	:~ p(X,Y). [ 1:1 ]
+
+is equivalent to::
+
+	:~ p(X,Y). [ 1@1, X,Y]
+
+while::
+
+	:~ p(X,Y). [ 1@1, X]
+
+**is different**, and corresponds to::
+
+	:~ q(X). [1:1]
+	q(X) :- p(X,Y).
+
+* Example
+
+	A::
+	
+		:~ p(X,Y). [ 1@1, X] 
+		equivalent to 
+		:~ q(X). [1:1]
+		q(X) :- p(X,Y).
+		
+	B::
+	
+		:~ p(X,Y). [ 1@1, X,Y] 
+		equivalent to 
+		:~ p(X,Y) [1:1]
+
+With facts::
+
+	p(1,2). p(1,3).
+	
+Costs::
+	
+	A: costs [1@1]. 
+	B: costs [2@1].
+
+Recursion
+==========================
+
+**Same generation**
+
+Given a parent-child relationship, represented by acyclic directed graph, 
+we want to find all pairs of persons belonging to the same generation. 
+
+Two persons are of the same generation, if either they are siblings, 
+or they are children of two persons of the same generation. 
+
+If input is encoded by a relation parent(A,B), 
+where a fact parent(a, b) states that 'a' is 'a parent of b', 
+
+the solution can be encoded by the following program, which
+computes a relation ancestor(A,B) containing all facts such that A is of the same generation as B:
+
+If we want to define the relation of arbitrary ancestors rather than grandparents, we make use of recursion::
+
+	ancestor(A,B) :- parent(A,B).
+	ancestor(A,C) :- ancestor(A,B), ancestor(B,C).
+
+An equivalent representation is::
+
+	ancestor(A,B) :- parent(A,B).
+	ancestor(A,C) :- ancestor(A,B), parent(B,C).
+
+Transitive Closure
+==========================
+
+**Reachability**
+ 
+Given a finite directed graph G = (N,A), 
+we want to compute all pairs of nodes (a, b) ∈ N × N such that 'b' is reachable from 'a' through a not empty sequence of arcs in A. 
+
+In other words, the problem amounts to computing the transitive closure of the relation A.
+Suppose we are representing a graph by a relation edge(X,Y).
+
+I want to express the query: Find all nodes reachable from the others.
+
+:: 
+
+	path(X,Y) :- edge(X,Y).
+	path(X,Y) :- path(X,Z), path(Z,Y).
+	
+List
+==========================
+
+A list is a binary function denoted with a special syntax: ``[H|T]``
+
+Where the first argument **«H»** is a term, called the
+head of the list, and the second argument **«T»** is a list.
+
+In addition, a list can be represented by explicitly
+listing its elements.
+
+	[ a, b, c ] = [ a | [ b, c ] ] = [ a | [ b | [ c ] ] ] = [a|[b|[c|[]]]]
+
+* LIST TERMS
+
+	A list term can be of the two forms::
+	
+		* [ t1, . . . , tn ], where t1, . . . , tn are terms;
+		* [ h | t ], where h (the head of the list) is a term, and t (the tail of the list) is a list term.
+
+* Examples::
+
+	* The term [ a,d,a ] in the atom palindromic([a,d,a])
+	* [ jan,feb,mar ]
+	* [jan | [ feb,mar,apr,may,jun ] ]
+	* [ [jan,31] | [ [ feb,28 ], [ mar,31 ], [ apr,30 ], [ may,31], [ jun,30 ] ] ].
+
+I-DLV (and DLV2) comes with a rich library of built-in predicates for list manipulation.
+
+A built-in atom is of the form::
+	
+	&p(t 0 ,.., t n ; u 0 ,…, u m )
+
+where n,m >= 0
+
+* ``t 0 ,.., t n`` are input terms, and are separated from the output terms ``u 0 ,…, u m`` by a semicolon (“;”);
+* an input/output term can be either a constant or a variable.
+
+Intuitively, output terms are computed on the basis of the input
+ones, according to a semantics which is defined "a priori" for
+each predicate, as reported next.
+
+.. list-table:: List
+	:widths: 10 20 20 20
+	:header-rows: 1
+	
+	* - Atom
+	  - Behaviour in Assignment           	      
+	  - Behaviour in Comparison 	                          
+	  - Constraints
+
+	* - ``&append(L1,L2;LR)``        
+	  - appends L2 to L1, the resulting list is assigned to LR        
+	  - true iff LR is equal to the list obtained appending L2 to L1                         
+	  - L1 and L2 must be list terms, LR must be either a variable or a list term
+	
+	* - ``&delNth(L,P;LR)``      
+	  - deletes the element at position P in L, the resulting list is assigned to LR       
+	  - true iff LR is equal to the list obtained deleting the P-th element from L                        
+	  - L must be a list terms, LR must be either a variable or a list term and P must be an integer s.t. 0<P
+	   
+	* - ``&flatten(L;LR)``     
+	  - flattens L and assigns the resulting list to LR           
+	  - true iff LR is equal to the list obtained by flattening the list term L                           
+	  - L must be a list term, LR must be either a variable or a list term
+	  
+	* - ``&head(L;E)``     
+	  - assigns the head of L to E   
+	  - true iff E is equal to the head of L
+	  - L must be a list term
+
+	* - ``&insLast(L,E;LR)``     
+	  - appends E to L, the resulting list is assigned to LR            
+	  - true iff LR is equal to the list obtained appending E to L        
+	  - L must be a list term, LR must be either a variable or a list term
+
+	* - ``&insNth(L,E,P;LR)``
+	  - inserts E at position P of L,the resulting list is assigned to LR         	      
+	  - is true iff LR is a list obtained by inserting the term E into L at position P	                          
+	  - L must be a list term, LR must be either a variable or a list term, P must be an integer s.t P>O
+
+	* - ``&last(L;E)``
+	  - assigns the last element of L to E           	      
+	  - true iff E is equal to the last element of L	                          
+	  - L must be a list term
+	
+	* - ``&length(L;Z)``
+	  - assigns the length of L to Z      	      
+	  - true iff length(L)>0 holds	                          
+	  - L must be a list term, Z must be either a variable or an integer
+
+	* - ``&member(E,L;)``
+	  - -          	      
+	  - true iff L contains the term E	                          
+	  - L must be a list term
+
+	* - ``&memberNth(L,P;E)``
+	  - assigns to E the term contained at position P of L           	      
+	  - true iff E is equal to the element at position P in L	                          
+	  - L must be a list terms and P must be an integer s.t. P>0
+
+	* - ``&reverse(L;LR)``
+	  - computes the reverse of L, the reversed string is assigned to LR           	      
+	  - true iff LR is equal to the reverse of L	                          
+	  - L must be a list term, LR must be either a variable or a list term
+
+	* - ``&reverse_r(L;LR)``
+	  - computes the reverse of L and of all nested list terms, the reversed L is assigned to LR        	      
+	  - true iff LR is equal to the list obtained by reversing L and all nested list terms 	                          
+	  - L must be a list term, LR must be either a variable or a list term
+
+	* - ``&delete(E,L;LR)``
+	  - delete all occurrences of E in L, the resulting list is assigned to LR          	      
+	  - true iff LR is equal to the list obtained by removing all occurrences of E in L	                          
+	  - L must be a list term, LR must be either a variable or a list term
+
+	* - ``&delete_r(E,L;LR)``
+	  - delete all occurrences of E in L and in all the nested list, the resulting list is assigned to LR
+	  - true iff LR is equal to the list obtained by removing all occurrences of E in L and in all nested list terms 	                          
+	  - L must be list term, LR must be either a variable or a list term
+
+	* - ``&subList(L1,L2;)``
+	  - -           	      
+	  - true iff L1 is a subL of L2	                          
+	  - L1 and L2 must be list terms
+
+	* - ``&tail(L;E)``
+	  - assigns the tail of L to E         	      
+	  - true iff E is equal to the tail of L	                          
+	  - L must be a list term
