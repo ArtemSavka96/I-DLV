@@ -1,13 +1,13 @@
-Download
+.. toctree::
+   :maxdepth: 3
+   :caption: Basic Version   
+
+   basic
+
+About
 +++++++++++++++++++++++++
 
-* I-DLV is a full-fledged Answer Set Programming and Datalog reasoner.
-  It supports the ASP-Core-2 standard language; nevertheless, the system supports additional linguistic extensions such as list terms and external atoms. 
-
-* I-DLV is also a full-fledged deductive database system, supporting query answering powered by the Magic Sets technique. 
-  I-DLV has also been integrated as the grounding module of the completely renewed second version of the logic-based Artificial Intelligence system DLV.
-
-* The basic version of I-DLV support weak costraint, costraint, list, annotations, aggregate functions and so on :ref:`Syntax`.
+* The basic version of I-DLV supports `ASP-Core-2`_ plus some addictional lanuage extensions suuch as list terms, default external literals and annotations.
 
 * The basic version of I-DLV:
 
@@ -15,12 +15,11 @@ Download
 
 	* **Windows**: Static executable of I-DLV for Windows 64bit.
 		
-Link
+Download
 ========================
 		
 * You can download the latest stable release of I-DLV `in the release section of github <https://github.com/DeMaCS-UNICAL/I-DLV/releases>`_.
 	
-
 How to execute
 ================================
 
@@ -72,12 +71,11 @@ How to execute
 How to cite I-DLV
 ============================
 
-* Francesco Calimeri, Davide Fuscà, Simona Perri, Jessica Zangari: I-DLV: The New Intelligent Grounder of dlv. AI*IA 2016: 192-207
+* Francesco Calimeri, Davide Fuscà, Simona Perri, Jessica Zangari: `I-DLV: The New Intelligent Grounder of dlv. AI*IA 2016: 192-207 <https://www.researchgate.net/publication/316352879_I-DLV_The_new_intelligent_grounder_of_DLV>`_
 
-* Francesco Calimeri, Davide Fuscà, Simona Perri, Jessica Zangari: I-DLV: The new intelligent grounder of DLV. Intelligenza Artificiale 11(1): 5-20 (2017)
+* Francesco Calimeri, Davide Fuscà, Simona Perri, Jessica Zangari: `I-DLV: The new intelligent grounder of DLV. Intelligenza Artificiale 11(1): 5-20 (2017) <https://www.researchgate.net/publication/316352879_I-DLV_The_new_intelligent_grounder_of_DLV>`_
 
-
-.. _Syntax:
+.. _BasicSyntax:
 
 Syntax
 +++++++++++++++
@@ -87,7 +85,6 @@ Basic Language
 
 Terms
 *****************
-
 
 * Terms are either constants or variables
 * Constants can be either symbolic constants (strings starting with some lowercase letter), string constants (quoted strings) or integers::
@@ -239,7 +236,7 @@ projecting
 
 :: 
 
-	:~ p(X,Y). [ 1:1 ]
+	:~ p(X,Y). [ 1@1 ]
 
 is equivalent to::
 
@@ -251,7 +248,7 @@ while::
 
 **is different**, and corresponds to::
 
-	:~ q(X). [1:1]
+	:~ q(X). [1@1]
 	q(X) :- p(X,Y).
 
 * Example
@@ -260,14 +257,14 @@ while::
 	
 		:~ p(X,Y). [ 1@1, X] 
 		equivalent to 
-		:~ q(X). [1:1]
+		:~ q(X). [1@1]
 		q(X) :- p(X,Y).
 		
 	B::
 	
 		:~ p(X,Y). [ 1@1, X,Y] 
 		equivalent to 
-		:~ p(X,Y) [1:1]
+		:~ p(X,Y) [1@1]
 
 With facts::
 
@@ -387,51 +384,20 @@ For example of GCO or GC:
 
 * :ref:`3Col`.
 
-Annotations
-*************************
+Default External Atoms and List Terms
+======================================
 
-* I-DLV introduces a new special feature for facilitating system customization and tuning: annotations of ASP code. 
-  I-DLV annotations allow to give explicit directions on the internal grounding process, at a more fine-grained level with respect to the command-line options: 
-  they **annotate** the ASP code in a Java-like fashion while embedded in comments, so that the resulting programs can still be given as input to other ASP systems, without any modification.
+* From version 1.1.5, I-DLV provides a wide set of built-in functions with predefined semantics: their syntax is in line with that of `Python`_ external atoms and as in the case of `Python`_ external atoms, default external atoms are completely evaluated at grounding time. 
+  Default external atoms provides ready-to-use features to manage integers, strings and list terms. 
+  They can be used as assignments, i.e., to generate new values for output variables, or in comparisons, i.e., to check if the specified conditions hold. 
+  However, since all these functionalities, described below, are intenally implemented within the system, for their usage it is not needed any `Python`_ script.
 
-* Syntactically, all annotation start with the prefix ``%@`` and end with a dot (``.``). 
-  Currently, I-DLV supports annotations for customizing two of the major aspects of the grounding process, body ordering and indexing as well as further optimizations intervening in its grounding process.
+* An default external literal is either not e or e, where e is a default external atom, and the symbol not represents default negation.
 
-A specific body ordering strategy can be explicitly requested for any rule, simply preceding it with the line::
-
-	%@rule_ordering(@value=Ordering_Type).
-
-where Ordering_Type is a number representing an ordering strategy. In addition, it is possible to specify a particular partial order among atoms, no matter the employed ordering strategy, by means of before and after directives. For instance, in the next example I-DLV is forced to always put literals ``a(X,Y) and X = #count{Z : c(Z)}}`` before literal ``f(X,Y )`` , whatever the order chosen::
-
- 	%@rule_partial_order(@before={a(X,Y),X=#count{Z:c(Z)}},@after={f(X,Y)}).
-
-As for indexing, directives on a per-atom basis can be given; the next annotation, for instance, request that, in the subsequent rule, atom ``a(X,Y,Z)`` is indexed, if possible, with a double-index the first and third arguments::
-
-  	%@rule_atom_indexed(@atom=a(X,Y,Z),@arguments={0,2}).
-
-The projection rewriting can be customized for any rule, by preceding it with the line::
-
-  	%@rule_projection(n).
-
-where ``n`` can either ``0``, ``1`` or ``2``, as for the command-line projection option described above.
-
-The rewriting arithmetic terms, disabled by default, can be enabled for any rule, by specifying before it the following annotation::
-
-  	%@rule_rewrite_arith().
-
-Similarly, the aligning substitution technique disabled by default, can be enabled for a specific rule by preceding it with::
-
-  	%@rule_align_substitutions().
-
-while, for enabling the look-ahead technique, the annotation to use is the following::
-
-  	%@rule_look_ahead().
-
-* Multiple preferences can be expressed via different annotations; in case of conflicts, priority is given to the first. 
-  In addition, preferences can also be specified at a **global** scope, by replacing the rule directive with the global one. 
-  While a rule annotation must precede the intended rule, global annotations can appear on any line in the input program. 
-  Both global and rule annotations can be expressed in the same program; in case of overlap on a particular rule/setting, priority is given to the rule ones.
-
+* Nevertheless, users can redefine the semantics of such default external atoms. 
+  In particular, a built-in function can be redefined by providing as input to I-DLV a `Python`_ script with .py extension, specifying a function with the same name and parameters; 
+  in this case, the user externally provided sematics are used in place of the default internal one. 
+  In this case, one can still force the system to adopt the default semantics via the command line option ``--default-external-atom``.
 	
 List
 *************************
@@ -563,6 +529,140 @@ each predicate, as reported next.
 	  - assigns the tail of L to E         	      
 	  - true iff E is equal to the tail of L	                          
 	  - L must be a list term
+
+* :ref:`List`.
+
+Arithmetic Facilities
+*************************
+
+.. list-table:: Arithmetic
+	:widths: 10 20 20 20
+	:header-rows: 1
+	
+	* - Atom
+	  - Semantics in Assignment               	      
+	  - Semantics in Comparison                            
+	  - Constraints
+
+	* - ``&abs(X;Z)``        
+	  - assigns the absolute value of X to Z         
+	  - true iff Z=|X| holds                               
+	  - X must be an integer
+	
+	* - ``&int(X,Y;Z)``      
+	  - generates all Z integers s.t. X<=Z<=Y        
+	  - true iff X<=Z<=Y holds                             
+	  - X and Y must be integers and X<=Y
+	   
+	* - ``&mod(X,Y;Z)¹``     
+	  - assigns the result of X%Y to Z               
+	  - true iff Z=X%Y holds                               
+	  - X and Y must be integers and Y!=0
+	  
+	* - ``&rand(X,Y;Z)``     
+	  - assigns a random number to Z s.t. X<=Z<=Y    
+	  - true iff Z is equal to the selected random number  
+	  - X and Y must be integers and X<=Y
+
+	* - ``&sum(X,Y;Z)²``     
+	  - assigns the result of X+Y to Z               
+	  - true iff Z=X+Y holds                               
+	  - X and Y must be integers
+
+``¹`` It can also be expressed using a built-in atom of the form: ``Z=X\Y``. Notice that in this case Z must be bound in order to make the rule safe, i.e., it must be contained within a positive literal or involved within an assignment.
+
+``²`` It can also be expressed using a standard built-in atom of the form: ``Z=X+Y``.
+
+* :ref:`Arithmetic`.
+	
+Strings Facilities
+**********************
+
+.. list-table:: Strings
+	:widths: 10 20 20 20
+	:header-rows: 1
+	
+	* - Atom
+	  - Behaviour in Assignment               	      
+	  - Behaviour in Comparison                            
+	  - Constraints
+
+	* - ``&append_str(X,Y;Z)``        
+	  - appends Y to X, the resulting string is assigned to Z         
+	  - true iff Z is equal to the string obtained appending Y to X                          
+	  - X, Y and Z can be numeric, symbolic or string constants
+	
+	* - ``&length_str(X;Z)¹``      
+	  - assigns the length of X to Z        
+	  - true iff length(X)<=Z holds                          
+	  - X can be numeric, symbolic or string constant. Z must be an integer
+	   
+	* - ``&member_str(X,Y;)``     
+	  - -            
+	  - true iff Y contains X                            
+	  - X and Y can be numeric, symbolic or string constants
+	  
+	* - ``&reverse_str(X;Z)¹``     
+	  - computes the reverse of X, the resulting string is assigned to Z   
+	  - true iff Z is equal to the reverse of X 
+	  - X and Z can be numeric, symbolic or string constants
+
+	* - ``&sub_str(X,Y,W;Z)``     
+	  - generates a substring of W starting from X to Y, the resulting string is assigned to Z              
+	  - true iff Z is equal to the substring of W starting from X to Y                              
+	  - X and Y must be integers s.t..  W must be either a symbolic or string constant, Z must be a string constant
+
+``¹`` it is able to deal with strings containing special characters performing an internal conversion from the UTF-8 encoding to the UTF-16 one. The command line option ``--no-string-conversion`` can be used to disable this conversion.
+
+* :ref:`String`.
+
+Annotations
+*************************
+
+* I-DLV introduces a new special feature for facilitating system customization and tuning: annotations of ASP code. 
+  I-DLV annotations allow to give explicit directions on the internal grounding process, at a more fine-grained level with respect to the command-line options: 
+  they **annotate** the ASP code in a Java-like fashion while embedded in comments, so that the resulting programs can still be given as input to other ASP systems, without any modification.
+
+* Syntactically, all annotation start with the prefix ``%@`` and end with a dot (``.``). 
+  Currently, I-DLV supports annotations for customizing two of the major aspects of the grounding process, body ordering and indexing as well as further optimizations intervening in its grounding process.
+
+A specific body ordering strategy can be explicitly requested for any rule, simply preceding it with the line::
+
+	%@rule_ordering(@value=Ordering_Type).
+
+where Ordering_Type is a number representing an ordering strategy. In addition, it is possible to specify a particular partial order among atoms, no matter the employed ordering strategy, by means of before and after directives. For instance, in the next example I-DLV is forced to always put literals ``a(X,Y) and X = #count{Z : c(Z)}}`` before literal ``f(X,Y )`` , whatever the order chosen::
+
+ 	%@rule_partial_order(@before={a(X,Y),X=#count{Z:c(Z)}},@after={f(X,Y)}).
+
+As for indexing, directives on a per-atom basis can be given; the next annotation, for instance, request that, in the subsequent rule, atom ``a(X,Y,Z)`` is indexed, if possible, with a double-index the first and third arguments::
+
+  	%@rule_atom_indexed(@atom=a(X,Y,Z),@arguments={0,2}).
+
+The projection rewriting can be customized for any rule, by preceding it with the line::
+
+  	%@rule_projection(n).
+
+where ``n`` can either ``0``, ``1`` or ``2``, as for the command-line projection option described above.
+
+The rewriting arithmetic terms, disabled by default, can be enabled for any rule, by specifying before it the following annotation::
+
+  	%@rule_rewrite_arith().
+
+Similarly, the aligning substitution technique disabled by default, can be enabled for a specific rule by preceding it with::
+
+  	%@rule_align_substitutions().
+
+while, for enabling the look-ahead technique, the annotation to use is the following::
+
+  	%@rule_look_ahead().
+
+* Multiple preferences can be expressed via different annotations; in case of conflicts, priority is given to the first. 
+  In addition, preferences can also be specified at a **global** scope, by replacing the rule directive with the global one. 
+  While a rule annotation must precede the intended rule, global annotations can appear on any line in the input program. 
+  Both global and rule annotations can be expressed in the same program; in case of overlap on a particular rule/setting, priority is given to the rule ones.
+
+
+.. _BasicExample:
 
 Example
 ++++++++++++++++
@@ -725,3 +825,81 @@ In fine, with **GC**, we use a different approach for solving the Problem P3c::
 
 	% Only one color per node
 	:- col(X, C1), col(X,C2), C1!=C2.
+
+.. _Arithmetic:
+
+Arithmetic
+============================
+
+Input program::
+
+	number(Z) :- &int(-3,3;Z).
+	even(Z) :- number(Z), &mod(Z,2;0).
+	odd(Z) :- number(Z), not &mod(Z,2;0).
+
+Instantiation output::
+
+	number(-3). number(-2). number(-1). 
+	number(0). number(1). number(2). 
+	number(3).
+	even(-2). even(0). even(2).
+	odd(-3). odd(-1). 
+	odd(1). odd(3).
+
+.. _String:
+
+String
+============================
+
+Input facts::
+
+	str(123). 
+	str("23"). 
+	str(abc). 
+	str("xyz").
+
+Input program::
+
+	sub_str(W,Z) :- str(W), &length_str(W;Z1), Z1>=3, &to_qstr(W;W1), &sub_str(2,3,W1;Z).
+	rev_str(X,Z) :- str(X), &reverse_str(X;Z).
+
+Instantiation output::
+
+	str(123). str("23"). str(abc). str("xyz").
+	sub_str(123,"23"). sub_str(abc,"bc"). sub_str("xyz","yz").
+	rev_str(123,"321"). rev_str("23","32"). rev_str(abc,cba). rev_str("xyz","zyx").
+
+.. _List:
+
+List
+============================
+
+Input facts::
+
+	list([1,2,3]). list([[1,2]|[3,4,[5,6]]]).
+
+Input program::
+
+	flattened_list(Z):-list(L),&flatten(L;Z).
+	reverse(Z):-list(L),&reverse(L;Z).
+	recursive_reverse(Z):-list(L),&reverse_r(L;Z).
+	delete_element(Z):-list(L),&delete(2,L;Z).
+	recursive_delete_element(Z):-list(L),&delete_r(2,L;Z).
+	head(Z):-list(L),&head(L;Z).
+	tail(Z):-list(L),&tail(L;Z).
+
+Instantiation output::
+
+	list([1,2,3]). list([[1,2],3,4,[5,6]]).
+	flattened_list([1,2,3]). flattened_list([1,2,3,4,5,6]).
+	reverse([3,2,1]). reverse([[5,6],4,3,[1,2]]).
+	recursive_reverse([3,2,1]). recursive_reverse([[6,5],4,3,[2,1]]).
+	delete_element([1,3]). delete_element([[1,2],3,4,[5,6]]).
+	recursive_delete_element([1,3]). recursive_delete_element([[1],3,4,[5,6]]).
+	head(1). head([1,2]).  
+	tail([2,3]). tail([3,4,[5,6]]).
+
+.. _Publication: https://www.researchgate.net/publication/316352879_I-DLV_The_new_intelligent_grounder_of_DLV
+.. _ASP-Core-2: https://arxiv.org/abs/1911.04326 
+.. _DLV: https://dlv.demacs.unical.it   
+.. _Python: https://www.python.org
