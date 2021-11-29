@@ -1,11 +1,17 @@
-Download
+.. toctree::
+   :maxdepth: 3
+   :caption: Incremental Version 
+
+   i2dlv
+
+About
 ++++++++++++
 
-* I²DLV is intended as the incremental version of the intelligent grounder I-DLV: as its standard version, I²DLV is an Answer Set Programming (ASP) instantiator that natively supports the ASP-Core-2 standard language.
+* I²DLV is intended as the incremental version of the intelligent grounder I-DLV: as its standard version, I²DLV is an Answer Set Programming (ASP) instantiator that natively supports the `ASP-Core-2`_ standard language.
 
 * The I²DLV instantiation mechanism allows repeated "shots" in which previous instantiations are reused and updated according to the so-called "overgrounding technique".
 
-Link
+Download
 =============
 
 * You can download a beta release of I²DLV, `here <https://www.mat.unical.it/pacenza/storage/incremental-idlv/idlv-incremental.zip>`_.
@@ -42,11 +48,11 @@ It is possible to use the I²DLV system in different ways:
 How to Cite I²DLV
 =========================
 
-* Francesco Calimeri, Giovambattista Ianni, Francesco Pacenza, Simona Perri, Jessica Zangari: Incremental Answer Set Programming with Overgrounding. TPLP 2019: 957-973
+* Francesco Calimeri, Giovambattista Ianni, Francesco Pacenza, Simona Perri, Jessica Zangari: `Incremental Answer Set Programming with Overgrounding. TPLP 2019: 957-973 <https://arxiv.org/abs/1907.09212>`_
 
-* Giovambattista Ianni and Francesco Pacenza and Jessica Zangari: Incremental maintenance of overgrounded logic programs with tailored simplifications. TPLP 2020: 719-734
+* Giovambattista Ianni and Francesco Pacenza and Jessica Zangari: `Incremental maintenance of overgrounded logic programs with tailored simplifications. TPLP 2020: 719-734 <https://arxiv.org/abs/2008.04108>`_
 
-
+.. _IncrementalSyntax:
 
 Syntax
 +++++++++++
@@ -66,7 +72,7 @@ _________________
 
 * The tag ``load`` can be used to form an XML element that requests to load input programs or data; the admitted attribute is:
 
-* ``path`` a file path pointing to the data to be loaded, in ASP-CORE-2 format.
+* ``path`` a file path pointing to the data to be loaded, in `ASP-Core-2`_ format.
 
 	Example of load tag::
 	
@@ -170,6 +176,7 @@ ______________________
 
 * ``--port`` set the port number in server mode (by default, it is set to ``4790``).
 
+.. _IncrementalExample:
 
 Example
 +++++++++++++++
@@ -206,3 +213,7 @@ How to execute
 ::
 
 	./idlv-incremental/i2dlv < test/recursion/template.xml
+
+
+.. _ASP-Core-2: https://arxiv.org/abs/1911.04326 
+.. _DLV: https://dlv.demacs.unical.it   
