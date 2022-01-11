@@ -25,18 +25,18 @@ I-DLV
 
    Incremental/i2dlv
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Contact Us   
+
+   Contact/contact
+
 Core Team
 =========
    * Francesco Calimeri
    * Davide Fuscà
    * Simona Perri
    * Jessica Zangari
-
-
-Contacts
-========
-For more info, mail to: i-dlv@googlegroups.com.
-
 
 .. _ASP-Core-2: https://arxiv.org/abs/1911.04326 
 .. _DLV: https://dlv.demacs.unical.it   
