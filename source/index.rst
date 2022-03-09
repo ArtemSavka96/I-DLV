@@ -31,12 +31,6 @@ I-DLV
 
    Contact/contact
 
-Core Team
-=========
-   * Francesco Calimeri
-   * Davide Fuscà
-   * Simona Perri
-   * Jessica Zangari
 
 .. _ASP-Core-2: https://arxiv.org/abs/1911.04326 
 .. _DLV: https://dlv.demacs.unical.it   
